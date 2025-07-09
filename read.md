@@ -63,7 +63,174 @@ graph TD
 <details>
 <summary> 🧠  Code Walkthrough</summary>
 
-- Show how quizzes can be toggled or removed
+  ### Keling projectning bir qismidagi code ni ko'rib o'tamiz
+  
+```csharp
+using Spectre.Console;
+
+public static class QuizBuilder
+{
+    public static void Run()
+    {
+        AnsiConsole.Write(
+            new Rule("[bold yellow]TEACHER MODE[/]")
+                .Centered()
+                .RuleStyle("grey"));
+
+        var option = InputHelper.AskText(new[] { "Create quiz", "Manage quizzes", "Exit" });
+
+        switch (option)
+        {
+            case "Create quiz": CreateQuiz(); break;
+            case "Manage quizzes": QuizManager.Run(); break;
+            case "Exit": return;
+        }
+    }
+
+    public static void CreateQuiz()
+    {
+        var quizTitle = InputHelper.AskText("[ Title of new quiz ]");
+        var quizDescription = InputHelper.AskText("[ Short description ]");
+        bool IsActive = true;
+        var questions = new List<Dictionary<string, object>>();
+        var quiz = new Dictionary<string, object>()
+        {
+            ["Title"] = quizTitle,
+            ["Description"] = quizDescription,
+            ["IsActive"] = IsActive,
+            ["Questions"] = questions
+        };
+        while (true)
+        {
+            var quizType = InputHelper.AskText($"Add questions to “{quizTitle}”", ["Add MCQ", "Add True/False", "Add Short Answer", "Finish Quiz"]);
+
+            switch (quizType)
+            {
+                case "Add MCQ":
+                    questions.Add(McqQuestion.Run());
+                    break;
+                case "Add True/False":
+                    questions.Add(TrueFalseQuestion.Run());
+                    break;
+                case "Add Short Answer":
+                    questions.Add(ShortAnswerQuestion.Run());
+                    break;
+                case "Finish Quiz":
+                    QuizStorage.ViewSummary(questions);
+                    var saveOption = InputHelper.AskConfirmation("Save quiz? [y/n]");
+
+                    if (saveOption)
+                    {
+                        QuizStorage.SaveQuizAsJson(quiz);
+                    }
+                    return;
+            }
+        }
+    }
+
+}
+```
+
+###  ---- MCQ Questions ----
+```csharp
+using System.Reflection.Emit;
+using Spectre.Console;
+
+public static class McqQuestion
+{
+    public static Dictionary<string, object> Run()
+    {
+        var question = InputHelper.AskText("Question prompt");
+
+        int? countOfOptions = InputHelper.AskInt("How many options would be? [ count must be integer]");
+
+
+        var optionsDictioanry = new Dictionary<string, string> { };
+
+
+        char i = 'A';
+        for (var _ = 0; _ < countOfOptions; _++)
+        {
+            optionsDictioanry[i.ToString()] = InputHelper.AskText($"Option {i}");
+            i++;
+        }
+
+        var correctOptionKey = InputHelper.AskText("Correct option key", optionsDictioanry.Keys.ToArray());
+
+        int? timeLimit = InputHelper.AskInt("Time limit in seconds (ENTER for none)");
+
+        var mcq = new Dictionary<string, object>
+        {
+            ["Type"] = "MCQ",
+            ["Prompt"] = question,
+            ["Options"] = optionsDictioanry,
+            ["Answer"] = correctOptionKey
+        };
+
+        if (timeLimit.HasValue)
+        {
+            mcq["TimeLimitSeconds"] = timeLimit.Value;
+        }
+
+        AnsiConsole.MarkupLine($"[green]Question added to MCQ successfully[/]");
+        return mcq;
+    }
+}
+
+```
+###  ---- Short Answers ----
+```csharp
+public static class ShortAnswerQuestion
+{
+    public static Dictionary<string, object> Run()
+    {
+        var question = InputHelper.AskText("Question prompt");
+
+        var correctOptionKey = InputHelper.AskText("[ Correct option key ]");
+
+        int? timeLimit = InputHelper.AskInt("[ Time limit in seconds (ENTER for none) ]");
+
+        var mcq = new Dictionary<string, object>
+        {
+            ["Type"] = "ShortAnswer",
+            ["Prompt"] = question,
+            ["Answer"] = correctOptionKey
+
+        };
+        if (timeLimit.HasValue)
+        {
+            mcq["TimeLimitSeconds"] = timeLimit;
+        }
+        return mcq;
+    }
+}
+
+
+
+```
+###  ---- True/False Questions ----
+```csharp
+public static class TrueFalseQuestion
+{
+    public static Dictionary<string, object> Run()
+    {
+        var question = InputHelper.AskText("Question prompt");
+
+        var correctOptionKey = InputHelper.AskText("Correct option key", ["True", "False"]);
+
+        var trueFalse = new Dictionary<string, object>
+        {
+            ["Type"] = "True/False",
+            ["Prompt"] = question,
+            ["Answer"] = correctOptionKey
+        };
+        return trueFalse;
+    }
+
+}
+
+```
+
 
 </details>
 
