@@ -4,9 +4,7 @@
 <details>
 <summary>🎤 Kirish </summary>
 
-- User opens quiz builder  
-- Adds questions  
-- Saves to file
+- #### "You don’t have to be great to start, but you have to start to be great."
 
 </details>
 
@@ -243,5 +241,6 @@ public static class TrueFalseQuestion
 -  ✅ Birinchi martta Json fayldan o'qish va unga yozish kerak bo'lgan real case ga duch keldm.
 -  ✅ Collections dan foydalandim
 
+#### "You don’t have to be great to start, but you have to start to be great."
 
 </details>
