@@ -4,6 +4,9 @@
 <details>
 <summary>🎤 Kirish </summary>
 
+  #### ⚙️ QuizApp project ning asosiy vazifasi student va teacher mode da ishlab bilimlarni mustahkamlashga yo'naltirilgan
+
+
 - #### "You don’t have to be great to start, but you have to start to be great."
 
 </details>
@@ -53,8 +56,7 @@ graph TD
 <details>
 <summary> 💻 Live Demo </summary>
 
-- System detects existing quiz  
-- User declines to overwrite
+- need to be video
 
 </details>
 
@@ -241,6 +243,6 @@ public static class TrueFalseQuestion
 -  ✅ Birinchi martta Json fayldan o'qish va unga yozish kerak bo'lgan real case ga duch keldm.
 -  ✅ Collections dan foydalandim
 
-#### "You don’t have to be great to start, but you have to start to be great."
+
 
 </details>
