@@ -56,7 +56,7 @@ graph TD
 <details>
 <summary> 💻 Live Demo </summary>
 
-- need to be video
+[▶️ Videoni tomosha qilish (Google Drive)](https://drive.google.com/file/d/1z8hSk4AAZdeXfJdSV2uxWVSHbsTj0Hy1/view?usp=drive_link)
 
 </details>
 
