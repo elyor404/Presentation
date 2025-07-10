@@ -14,7 +14,7 @@
 <details>
 <summary>🧩 Loyiha haqida umumiy tushuncha</summary>
   
-### “ QuizApp ” — bu o‘qituvchi va talabalar rejimida ishlaydigan dastur.
+##### “ QuizApp ” — bu o‘qituvchi va talabalar rejimida ishlaydigan dastur.
 - Bu dasturning asosiy funksiyalari:
 ```
         ✔️ Quizlarni yaratish va ularga vaqt belgilash
@@ -23,7 +23,7 @@
         ✔️ Natijani ko‘rish
         ✔️ JSON fayl bilan savollarni serializa deserialize qilish
 ```
-### Readability va Reusability  qulay bo'lish uchun project qismlarga break qilingan, keling project skeletini ko'rib chiqamiz 
+##### Readability va Reusability  qulay bo'lish uchun project qismlarga break qilingan, keling project skeletini ko'rib chiqamiz 
 ```mermaid
 graph TD
     H["QuizApp"] --> A[Program.cs]
@@ -49,7 +49,7 @@ graph TD
     F --> F1[C#_Basics.json]
 ```
 
-### Program.cs  da ham juda kop code yozilmagan , shunchaki tanlangan mode ga qarab boshqa bir classga yo'naltirilgan
+##### Program.cs  da ham juda kop code yozilmagan , shunchaki tanlangan mode ga qarab boshqa bir classga yo'naltirilgan
 ![My photo](images/image.png)
 </details>
 
@@ -63,7 +63,7 @@ graph TD
 <details>
 <summary> 🧠  Code Walkthrough</summary>
 
-  ### Keling projectning bir qismidagi code ni ko'rib o'tamiz
+  ##### Keling projectning bir qismidagi code ni ko'rib o'tamiz
   
 ```csharp
 using Spectre.Console;
@@ -131,7 +131,7 @@ public static class QuizBuilder
 }
 ```
 
-###  ---- MCQ Questions ----
+#####  ---- MCQ Questions ----
 ```csharp
 using System.Reflection.Emit;
 using Spectre.Console;
@@ -178,7 +178,7 @@ public static class McqQuestion
 }
 
 ```
-###  ---- Short Answers ----
+#####  ---- Short Answers ----
 ```csharp
 public static class ShortAnswerQuestion
 {
@@ -208,7 +208,7 @@ public static class ShortAnswerQuestion
 
 
 ```
-###  ---- True/False Questions ----
+#####  ---- True/False Questions ----
 ```csharp
 public static class TrueFalseQuestion
 {
@@ -237,8 +237,8 @@ public static class TrueFalseQuestion
 <details>
 <summary> 📌 Summary</summary>
 
-- #### "QuizApp" bu men bajargan 1-project , hattoki u mini console project bolsa ham , g'ij-g'ij bilim bo'ldi
-- ##### Nimalar o'rgandim :
+- ##### "QuizApp" bu men bajargan 1-project , hattoki u mini console project bolsa ham , g'ij-g'ij bilim bo'ldi
+- ###### Nimalar o'rgandim :
 -  ✅ Spectre library yangilik boldi , project davomida uni qisman o'rgandim va kerakli joylarda to'gri foydalandim.
 -  ✅ Birinchi martta Json fayldan o'qish va unga yozish kerak bo'lgan real case ga duch keldm.
 -  ✅ Collections dan foydalandim
